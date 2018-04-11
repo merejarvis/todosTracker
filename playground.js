@@ -25,6 +25,9 @@ let stringBreak = (input) => {
 
     // 3. date 
     for (let i = 0; i<result.length; i++) {
+        let currentDate = new Date().getDate()
+        let currentMonth = new Date().getMonth() + 1
+        let currentYear = new Date().getFullYear()
         result[i] = result[i].toLowerCase()
         // logic for dd-mm-yyyy
         if (result[i].match(/[0-9]?\d-[0-9]?\d-\d\d\d\d/)){
@@ -65,10 +68,6 @@ let stringBreak = (input) => {
                 break
             } else if (parseInt(result[i-1]) <= 31) {
                 // year unspecified, check if date has passed for current year
-                let currentDate = new Date().getDate()
-                let currentMonth = new Date().getMonth() + 1
-                let currentYear = new Date().getFullYear()
-
                 if (currentMonth > parseInt(month[result[i]]) || (currentMonth === parseInt(month[result[i]]) && currentDate > parseInt(result[i-1])) ) {
                     if (parseInt(result[i-1]) < 10){
                         date = `${currentYear + 1}-${month[result[i]]}-0${result[i-1]}`
@@ -84,34 +83,44 @@ let stringBreak = (input) => {
                         date = `${currentYear}-${month[result[i]]}-${result[i-1]}`
                     }
                     result.splice(i-1, 2)
-                    console.log('dato', date);
                     break
                 }
             }
         }
         //logic to handle words such as Sunday, tomorrow
         if(day[result[i]]) {
-
+            if (result[i] === 'tomorrow') {
+                let diff = 1
+                date = dateDiff(diff)
+                result.splice(i, 1)
+                break
+            } else {
+                let today = new Date ().getDay()
+                let diff = (day[result[i]] >= today)? day[result[i]] - today: day[result[i]] - today + 7
+                date = dateDiff(diff)
+                result.splice(i, 1)
+                break
+            } 
         }
     }
     result = result.join(' ').trim().split(' ')
-    console.log(result);
-
+    // use moment to check if date is valid and in correct format for db
     if(!verifyDate(date)){
         date = 'invalid date'
     }
     obj.date = date
 
     // 4. location
-  
-    
+    result = result.filter((elem) => {
+        return !['in', 'on', 'at', ''].includes(elem.toLowerCase())
+    })
+    obj.location = result.join(' ')
     console.log(obj);
     return obj
 }
 
 function extractTime (result) {
     let time = ''
-
     for (let i = 0; i < result.length; i++) {
         if (result[i].match(/\d+a?p?m/i)) {
             time = result.splice(i, 1)[0]
@@ -153,6 +162,19 @@ function dateFormat (date) {
     return arr.join('-')
 }
 
+function dateDiff (diff) {
+    let actual =  new Date ()
+    actual.setDate(new Date ().getDate() + diff)
+    date = `${actual.getDate()}-${actual.getMonth() + 1}-${actual.getFullYear()}`
+    date = dateFormat (date)
+    return date
+}
 
-stringBreak('join wedding party at Raffles in 2/3/18 at 1pm')
+
+stringBreak('join wedding party at Raffles in 7 apr at 1pm')
 stringBreak('go swimming at Community Centre 9am tomorrow')
+stringBreak('meet daud at masjid sultan at 2pm Fri')
+
+
+
+

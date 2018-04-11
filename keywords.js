@@ -6,6 +6,7 @@ module.exports = {
         monday: 1,
         mon: 1,
         tuesday: 2,
+        tues: 2,
         tue: 2,
         wednesday: 3,
         wed: 3,
