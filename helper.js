@@ -1,6 +1,14 @@
 const {day, month} = require('./keywords')
 const moment = require('moment')
 
+let genParams = (input) => {
+    let searchQuery = {}
+    for (let key in input) {
+        searchQuery[key] = input[key]
+    }
+    return searchQuery
+}
+
 function extractTime (result) {
     let time = ''
     for (let i = 0; i < result.length; i++) {
@@ -134,4 +142,4 @@ function extractDate (result) {
     }
 }
 
-module.exports = {extractTime, verifyDate, dateFormat, dateDiff, extractDate}
+module.exports = {genParams, extractTime, verifyDate, dateFormat, dateDiff, extractDate}

@@ -3,39 +3,27 @@ module.exports = (sequelize, DataTypes) => {
   var todo = sequelize.define('todo', {
     input: {
       type: DataTypes.STRING,
-      validate: {
-        notNull: true
-       }
+      allowNull: false
     },
     activity: {
       type: DataTypes.STRING,
-      validate: {
-        notNull: true
-       }
+      allowNull: false
     },
     location: {
       type: DataTypes.STRING,
-      validate: {
-        notNull: true
-       }
+      allowNull: false
     },
     date: {
       type: DataTypes.DATEONLY,
-      validate: {
-        notNull: true
-       }
+      allowNull: false
     },
     time: {
       type: DataTypes.TIME,
-      validate: {
-        notNull: true
-       }
+      allowNull: false
     },
     userId: {
       type: DataTypes.INTEGER,
-      validate: {
-        notNull: true
-       }
+      allowNull: false
     },
   }, {});
   todo.associate = function(models) {
