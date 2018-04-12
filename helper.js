@@ -4,7 +4,7 @@ const moment = require('moment')
 let genParams = (input) => {
     let searchQuery = {}
     for (let key in input) {
-        searchQuery[key] = input[key]
+        searchQuery[key] = input[key].toLowerCase()
     }
     return searchQuery
 }

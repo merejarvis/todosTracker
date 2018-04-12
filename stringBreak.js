@@ -9,30 +9,32 @@ let stringBreak = (input) => {
     let location 
     let date
     
-    if (!arr.includes('at')) {
-        return obj
-    }
-
-    // info extraction order: activity, time, date, location
-    // 1. activity 
-    let result = input.split('at ')
-    activity = result.shift().trim()
-    if (activity === '') {
-        activity = null
-    }
-    obj.activity = activity
-
-    // 2. time 
-    result = result.join(' ').trim().split(' ')
+    // info extraction order: time, date, activity, location
+    // 1. time
+    result = input.split(' ')
     obj.time = extractTime(result)
 
-    // 3. date 
+    // 2. date
     date = extractDate(result)
-    // use moment to check if date is valid and in correct format for db
     if(!verifyDate(date)){
         date = null
     }
     obj.date = date
+
+    // 3. activity 
+    if (result.includes('at')) {
+        result = result.join(' ').split(' at ')
+    } else if(result.includes('on')) {
+        result = result.join(' ').split(' on ')
+    }
+   
+    activity = result.shift().trim()
+    activity = activity.split(' ').filter((elem) => {
+        return !['in', 'on', 'at', ''].includes(elem.toLowerCase())
+    })
+    activity = activity.join(' ')
+    obj.activity = (activity === '')? null: activity
+   
 
     // 4. location
     result = result.filter((elem) => {
@@ -40,7 +42,7 @@ let stringBreak = (input) => {
     })
     
     if(result.length) {
-        obj.location = result.join(' ')
+        obj.location = result.join(' ').toLowerCase()
     }
    
     console.log(obj);
