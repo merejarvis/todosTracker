@@ -128,8 +128,6 @@ function extractDate (result) {
         if(day[result[i]]) {
             if (result[i] === 'tomorrow' || result[i] === 'today') {
                 let diff = day[result[i]]
-                console.log('tomm', diff);
-                
                 date = dateDiff(parseInt(diff))
                 result.splice(i, 1)
                 return date
@@ -148,4 +146,3 @@ function extractDate (result) {
 
 module.exports = {genParams, extractTime, verifyDate, dateFormat, dateDiff, extractDate}
 
-console.log(dateDiff(0));

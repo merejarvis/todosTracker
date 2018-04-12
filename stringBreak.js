@@ -26,15 +26,15 @@ let stringBreak = (input) => {
         result = result.join(' ').split(' at ')
     } else if(result.includes('on')) {
         result = result.join(' ').split(' on ')
+    } else {
+        result = [result.join(' ')]
     }
    
     activity = result.shift().trim()
     activity = activity.split(' ').filter((elem) => {
         return !['in', 'on', 'at', ''].includes(elem.toLowerCase())
-    })
-    activity = activity.join(' ')
+    }).join(' ')
     obj.activity = (activity === '')? null: activity
-   
 
     // 4. location
     result = result.filter((elem) => {
@@ -44,8 +44,7 @@ let stringBreak = (input) => {
     if(result.length) {
         obj.location = result.join(' ').toLowerCase()
     }
-   
-    console.log(obj);
+
     return obj
 }
 

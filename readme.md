@@ -1,7 +1,7 @@
 # todosTracker API
 
-**About:**
-**2 API Endpoints**
+**About- 2 API Endpoints**
+
 1. API endpoint 1 allows user to enter todo tasks via freetext input
 2. API endpoint 2 allows user to retrieve tasks based on date, time or location through query strings
 
@@ -29,9 +29,9 @@ In main directory, run: 'node seeders/seedUser' followed by 'node seeders/seedUs
 
 * Method used here was to firstly extract time data by searching for am/pm. Secondly, date data by looking for date formats as explained in the following paragraphs. At each step of the search, once entities are found in the user string, they will be purged out from the string.
 
-* After time and date, activity was extracted via splitting across the 'at' or 'on' keywords and finally location was derived from what remains of the purged string. 
+* After time and date, activity data was extracted via splitting across the 'at' or 'on' keywords and finally location data was derived from what remains of the purged string. 
 
-* Date extraction in particular was tough as I tried to make it as exhaustive as possible. Supported formats for date entry include: dd-mm-yyyy, dd-mm-yy, dd/mm/yy, dd/mm/yyyy, dd month, dd month yyyy (month can be in full or shortened form eg jan/ january) & special keywords such as today, tomorrow, mon- sun, monday-sunday. Not specifying any date in the task will assume the date as today's date. 
+* Date extraction in particular was tough as I tried to make it exhaustive so that it can accept a large number of possible user inputs. Supported formats for date entry include: dd-mm-yyyy, dd-mm-yy, dd/mm/yy, dd/mm/yyyy, dd month, dd month yyyy (month can be in full or shortened form eg jan/ january) & special keywords such as today, tomorrow, mon- sun, monday-sunday. Not specifying any date in the task will assume the date as today's date. 
 
 **Highlights:**
 * Algorithm to extract data from user freetext input is quite malleable. For eg. "kungfu fighting at home 6pm" & "6pm kungfu fighting at home" yields the same results and sets the date as today without even specifying. Even without location information eg. "kungfu fighting 6pm", the correct data will be extracted.

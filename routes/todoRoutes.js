@@ -3,7 +3,7 @@ const router = express.Router()
 const db = require('../models/index') 
 const keywords = require('../keywords') 
 const {genParams} = require('../helper') 
-const {stringBreak} = require('../stringBreak.1')
+const {stringBreak} = require('../stringBreak')
 
 router.get('/', (req, res) => {
     if (!Object.keys(req.query).length) {
@@ -22,7 +22,6 @@ router.get('/', (req, res) => {
 
 router.post('/add', (req, res) => {
     let record = stringBreak(req.body.input)
-    console.log(record);
     db.todo.create(record).then(function(data) {
         res.send(data.dataValues);
     }).catch((e) => {
