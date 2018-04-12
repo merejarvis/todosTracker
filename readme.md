@@ -10,7 +10,7 @@
 
 1. create todosTracker db in postgres
 2. run migrations: 'sequelize db:migrate'
-3. (optional) seed db:
+3. (optional) seed the db:
 In main directory, run: 'node seeders/seedUser' followed by 'node seeders/seedUser'
 
 **API endpoints:**
@@ -39,17 +39,17 @@ In main directory, run: 'node seeders/seedUser' followed by 'node seeders/seedUs
 * Also, for cases where year is unspecified, eg "have dinner 1 apr 7pm" it will check against the current date. If the date has lapsed, it will save as 2019-04-01, which will make more sense when user is saving tasks near the end of the year.
 
 **Limitations:**
-* Currently possible to work only on user time input in am/pm format by whole hours eg. 9pm. Not possible to enter for eg. 21:00h, 9.30pm etc.
+* Currently possible to work only on user time input in am/pm format by whole hours eg. 9pm. Not possible to enter for eg. 21:00h, 9.30pm etc. User time input is currently required.
 
 * Largely dependent on user entry. Usage of words other than 'at' or 'on' in specifying locations/ activities will result in incorrect entries. Also large strings and handling locations with words 'at' or 'on' in them (eg 21 on rajah) will be incorrect.
 
 **Improvements:**
-* More features, ie. signin, signout, login, tasks clashing, multiple event entries
+* More features, ie. signin, signout, login, tasks clashing, sequential task entries
 
 * Testing or TDD approach due to user entry being in freetext form, which will lead to a more robust algorithm in breaking down the user input string
 
 * Data validations via model or schema methods
 
-* Error handling methods
+* Enhanced error handling methods
 
 
