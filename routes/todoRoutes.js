@@ -3,7 +3,7 @@ const router = express.Router()
 const db = require('../models/index') 
 const keywords = require('../keywords') 
 const {genParams} = require('../helper') 
-const {stringBreak} = require('../stringBreak')
+const {stringBreak} = require('../stringBreak.1')
 
 router.get('/', (req, res) => {
     if (!Object.keys(req.query).length) {
