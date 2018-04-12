@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
       }).then(function (result) {
           res.send(result)
       }).catch((e) => {
-          res.status(404).send('404 not found')
+          res.status(404).send('no records found')
       });
 })
 

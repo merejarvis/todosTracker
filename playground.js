@@ -14,7 +14,7 @@ let stringBreak = (input) => {
 
     // info extraction order: activity, time, date, location
     // 1. activity 
-    var result = input.split(' at ')
+    let result = input.split(' at ')
     activity = result.shift()
     obj.activity = activity
 
@@ -41,11 +41,9 @@ let stringBreak = (input) => {
 }
 
 
-
-
 stringBreak('join wedding party at Raffles in 7 apr at 1pm')
 stringBreak('go swimming at Community Centre 9am tomorrow')
-stringBreak('8pm dinner at zoo tomorrow ')
+stringBreak('dinner at zoo tomorrow 8pm ')
 
 
 

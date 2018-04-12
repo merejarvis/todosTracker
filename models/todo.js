@@ -1,15 +1,45 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var todo = sequelize.define('todo', {
-    string: DataTypes.STRING,
-    activity: DataTypes.STRING,
-    location: DataTypes.STRING,
-    date: DataTypes.DATEONLY,
-    time: DataTypes.TIME,
-    recurring: DataTypes.BOOLEAN
+    input: {
+      type: DataTypes.STRING,
+      validate: {
+        notNull: true
+       }
+    },
+    activity: {
+      type: DataTypes.STRING,
+      validate: {
+        notNull: true
+       }
+    },
+    location: {
+      type: DataTypes.STRING,
+      validate: {
+        notNull: true
+       }
+    },
+    date: {
+      type: DataTypes.DATEONLY,
+      validate: {
+        notNull: true
+       }
+    },
+    time: {
+      type: DataTypes.TIME,
+      validate: {
+        notNull: true
+       }
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notNull: true
+       }
+    },
   }, {});
   todo.associate = function(models) {
-    // associations can be defined here
+    models.todo.belongsTo(models.user)
   };
   return todo;
 };

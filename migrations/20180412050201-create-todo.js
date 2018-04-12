@@ -8,29 +8,23 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      string: {
-        allowNull: false,
+      input: {
         type: Sequelize.STRING
       },
       activity: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       location: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       date: {
-        allowNull: false,
         type: Sequelize.DATEONLY
       },
       time: {
-        allowNull: false,
         type: Sequelize.TIME
       },
-      recurring: {
-        defaultValue: false,
-        type: Sequelize.BOOLEAN
+      userId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
