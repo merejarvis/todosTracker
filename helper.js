@@ -142,6 +142,8 @@ function extractDate (result) {
             } 
         }
     }
+    //if date or keyword unspecified
+    return date = dateDiff(0)
 }
 
 module.exports = {genParams, extractTime, verifyDate, dateFormat, dateDiff, extractDate}
