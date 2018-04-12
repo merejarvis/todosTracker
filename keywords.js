@@ -1,8 +1,8 @@
 module.exports = {
     urlSample : 'url format sample: http://localhost:4000?date=2018-04-10&location=berlin&time=12:01 (time, date and location parameters optional)',
     day: {
-        sunday: 0,
-        sun: 0,
+        sunday: '0',
+        sun: '0',
         monday: 1,
         mon: 1,
         tuesday: 2,
@@ -17,6 +17,7 @@ module.exports = {
         saturday: 6,
         sat: 6,
         tomorrow: 1,
+        today: '0'
     },
     month: {
         jan: '01',

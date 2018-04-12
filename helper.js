@@ -126,15 +126,17 @@ function extractDate (result) {
         }
         //special words such as sunday, tomorrow
         if(day[result[i]]) {
-            if (result[i] === 'tomorrow') {
-                let diff = 1
-                date = dateDiff(diff)
+            if (result[i] === 'tomorrow' || result[i] === 'today') {
+                let diff = day[result[i]]
+                console.log('tomm', diff);
+                
+                date = dateDiff(parseInt(diff))
                 result.splice(i, 1)
                 return date
             } else {
                 let today = new Date ().getDay()
                 let diff = (day[result[i]] >= today)? day[result[i]] - today: day[result[i]] - today + 7
-                date = dateDiff(diff)
+                date = dateDiff(parseInt(diff))
                 result.splice(i, 1)
                 return date
             } 
@@ -143,3 +145,5 @@ function extractDate (result) {
 }
 
 module.exports = {genParams, extractTime, verifyDate, dateFormat, dateDiff, extractDate}
+
+console.log(dateDiff(0));
