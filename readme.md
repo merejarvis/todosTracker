@@ -8,9 +8,9 @@
 
 **Directions:**
 
-1. create todosTracker db in postgres
-2. run migrations: 'sequelize db:migrate'
-3. (optional) seed the db:
+1. Create todosTracker db in postgres
+2. Run migrations: 'sequelize db:migrate'
+3. (Optional) Seed the db:
 In main directory, run: 'node seeders/seedUser' followed by 'node seeders/seedUser'
 
 **API endpoints:**
