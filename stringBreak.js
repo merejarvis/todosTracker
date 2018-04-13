@@ -4,14 +4,13 @@ let stringBreak = (input) => {
     let obj = {}
     obj.userId = 1
     obj.input = input
-    let arr = input.split(' ')
     let activity
     let location 
     let date
     
     // info extraction order: time, date, activity, location
     // 1. time
-    result = input.split(' ')
+    let result = input.split(' ')
     obj.time = extractTime(result)
 
     // 2. date
