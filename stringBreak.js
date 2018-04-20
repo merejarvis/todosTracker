@@ -36,10 +36,10 @@ let stringBreak = (input) => {
     obj.activity = (activity === '')? null: activity
 
     // 4. location
-    result = result.filter((elem) => {
-        return !['in', 'on', 'at', ''].includes(elem.toLowerCase())
+    result = result[0].split(' ').filter((elem) => {
+        return !['in', 'on', 'at', 'this', ''].includes(elem.toLowerCase())
     })
-    
+
     if(result.length) {
         obj.location = result.join(' ').toLowerCase()
     }
